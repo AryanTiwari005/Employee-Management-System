@@ -8,8 +8,8 @@ Designed with a high-contrast dark aesthetic, role-based access control (Admin &
 
 ## 🚀 Live Demo & Repository
 
-- 🌐 **Live Demo**: [Deploy on Vercel / Netlify](https://vercel.com)
-- 📦 **GitHub Repository**: [Employee-Management-system](https://github.com/)
+- 🌐 **Live Demo**: [employee-management-system-rouge-eight.vercel.app](https://employee-management-system-rouge-eight.vercel.app)
+- 📦 **GitHub Repository**: [github.com/AryanTiwari005/Employee-Management-System](https://github.com/AryanTiwari005/Employee-Management-System)
 
 ---
 
