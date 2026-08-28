@@ -1,227 +1,209 @@
-# Employee Management System (EMS)
+# 🏢 Employee Management System (EMS)
 
-A modern, responsive, and role-based Employee Management System built with **React 19**, **Vite**, **Tailwind CSS v4**, and **React Router**. This application features role-based authentication, real-time task creation and assignment, interactive task lifecycle tracking (New, Accepted, Completed, Failed), and client-side data persistence with responsive layouts tailored for mobile, tablet, and desktop viewports.
+A sleek, modern, and production-ready **Employee Management & Task Tracking Web Application** built with **React 19**, **Vite 8**, **Tailwind CSS v4**, and **React Router v7**. 
 
----
-
-## 🚀 Live Demo
-
-🔗 **Live Application**: [https://your-deployment-url.vercel.app](https://your-deployment-url.vercel.app)  
-*(Replace with your live deployment URL on Vercel or Netlify)*
+Designed with a high-contrast dark aesthetic, role-based access control (Admin & Employee), interactive task workflows, responsive layouts, and seamless client-side data persistence.
 
 ---
 
-## 📸 Screenshots
+## 🚀 Live Demo & Repository
 
-> *Add your application screenshots in the `/public` or `assets` folder and update the links below.*
+- 🌐 **Live Demo**: [Deploy on Vercel / Netlify](https://vercel.com)
+- 📦 **GitHub Repository**: [Employee-Management-system](https://github.com/)
 
-| Admin Dashboard | Employee Dashboard |
+---
+
+## 📸 Key Interfaces
+
+| 👑 Admin Dashboard | 👷 Employee Dashboard |
 | :---: | :---: |
-| ![Admin Dashboard](https://via.placeholder.com/600x350/18181b/ffffff?text=Admin+Dashboard+Preview) | ![Employee Dashboard](https://via.placeholder.com/600x350/18181b/ffffff?text=Employee+Dashboard+Preview) |
+| Dynamic task assignment, employee validation & filterable task tables | Task counters, responsive card swipe-board & status actions |
 
-| Role-Based Login | Mobile View |
+| 🔐 Role-Based Login | ✏️ User Profile Customization |
 | :---: | :---: |
-| ![Login Page](https://via.placeholder.com/600x350/18181b/ffffff?text=Login+View) | ![Mobile View](https://via.placeholder.com/300x500/18181b/ffffff?text=Mobile+Responsive) |
+| 1-click demo autofill, password toggle & instant validation | Editable display name with persistent local storage |
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Tooling
 
-- **Frontend Core**: [React 19](https://react.dev/) & [Vite](https://vite.dev/)
-- **Routing**: [React Router v7](https://reactrouter.com/) (with `ProtectedRoute` guards and automatic redirects)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **State Management**: React Context API (`AuthContext` & `TaskContext`)
-- **Persistence**: `localStorage` (seeds default admin and employee tasks on initial visit)
-- **Notifications**: [React Hot Toast](https://react-hot-toast.com/)
+| Layer | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend Framework** | **React 19** (`react`, `react-dom`) | Functional components, custom hooks, and React 19 architecture |
+| **Build Tooling** | **Vite 8** (`@vitejs/plugin-react`) | Ultra-fast HMR and optimized production bundling |
+| **Styling** | **Tailwind CSS v4** (`@tailwindcss/vite`) | Modern utility-first styling with dark-mode aesthetic |
+| **Routing** | **React Router v7** (`react-router-dom`) | Role-based protected routes, redirects, and wildcard fallbacks |
+| **State Management** | **React Context API** | Decoupled `AuthContext` and `TaskContext` state layers |
+| **Notifications** | **React Hot Toast** | Toast feedback for auth, task mutations, and form validations |
+| **Persistence** | **LocalStorage API** | Automated schema hydration, data seeding, and real-time syncing |
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-- 🔐 **Role-Based Authentication & Guarded Routes**:
-  - Separate roles: **Admin** and **Employee**.
-  - Protected routes (`/admin`, `/employee`) with automatic cross-role redirects and fallback routing.
-  - Session routing preserving browser history and direct URL bookmarking.
-- 📋 **Admin Panel**:
-  - Assign new tasks to specific employees with dates, categories, titles, and descriptions.
-  - View all employee tasks with real-time status badges (`New`, `Accepted`, `Completed`, `Failed`).
-  - Filter tasks by employee assignee and completion status.
-  - Delete tasks with confirmation modal dialogs.
-- 👷 **Employee Workspace**:
-  - Live metric stat cards (New, Accepted, Completed, Failed task counts).
-  - Horizontal swipe-and-scroll task list with touch snap support.
-  - Change task status dynamically (Accept new tasks, mark as Completed, or flag as Failed).
-- 📱 **Fully Mobile-Responsive**:
-  - Adaptive grids, responsive typography, and touch-friendly controls tested across 375px (mobile), 768px (tablet), and 1024px+ (desktop) screens.
-- 🔔 **Interactive Feedback**:
-  - Rich toast notifications for login, logout, task creations, status updates, and errors.
+### 🔐 1. Authentication & Security
+- **Role-Based Routing**: Strict separation between Admin (`/admin`) and Employee (`/employee`) views.
+- **Route Protection**: `ProtectedRoute` guards automatically block unauthenticated sessions and redirect unauthorized role attempts.
+- **Demo Quick-Fill**: Single-click buttons to instantly log in as Admin or Employee for evaluation.
+- **Session Persistence**: Browser refreshes retain user session and role-specific data.
+
+### 📋 2. Admin Workspace
+- **Task Delegation**: Form validation ensures tasks are only dispatched to registered employees.
+- **Task Categorization**: Assign category tags (Frontend, Backend, Database, Bug Fix, Security, UI/UX).
+- **Task Overview & Filter Grid**: Live task table with filter controls by employee assignee and task status (`New`, `Accepted`, `Completed`, `Failed`).
+- **Task Deletion**: Safe deletion with confirmation modal dialog.
+
+### 👷 3. Employee Workspace
+- **KPI Metrics Header**: Instant summary cards showing counts of New, Accepted, Completed, and Failed tasks.
+- **Interactive Task Lifecycle**:
+  - **New Tasks**: Accept or acknowledge assignments.
+  - **Accepted Tasks**: Mark tasks as Completed or Flag as Failed.
+  - **Completed & Failed**: Color-coded status cards.
+- **Profile Customization**: Inline display name editor with live updates.
 
 ---
 
 ## 🔑 Demo Credentials
 
-The application automatically seeds `localStorage` on first load with the following test accounts:
+The application automatically seeds `localStorage` on initial launch with pre-configured accounts:
 
 ### 👑 Admin Account
 - **Email**: `admin@example.com`
 - **Password**: `123`
-- **Access Route**: `/admin`
+- **Role**: `Admin` $\rightarrow$ Routes to `/admin`
 
 ### 👷 Employee Accounts
-- **Password for all employees**: `123`
-- **Access Route**: `/employee`
-
-| Employee | Email | Initial Tasks |
-| :--- | :--- | :--- |
-| **Employee 1** | `employee1@example.com` | 5 tasks |
-| **Employee 2** | `employee2@example.com` | 5 tasks |
-| **Employee 3** | `employee3@example.com` | 5 tasks |
-| **Employee 4** | `employee4@example.com` | 5 tasks |
-| **Employee 5** | `employee5@example.com` | 5 tasks |
+| Name | Email | Password | Role | Initial Tasks |
+| :--- | :--- | :--- | :--- | :---: |
+| **Aryan** | `tiwariaryan.2005@gmail.com` | `Aryan@2005` | Employee | 5 |
+| **Sneha** | `employee2@example.com` | `123` | Employee | 4 |
+| **Rahul** | `employee3@example.com` | `123` | Employee | 4 |
+| **Priya** | `employee4@example.com` | `123` | Employee | 4 |
+| **Karan** | `employee5@example.com` | `123` | Employee | 4 |
 
 ---
 
-## 🏗️ Architecture & State Management
+## 🏗️ Architecture & State Flow
 
+```mermaid
+flowchart TD
+    App[App.jsx - Router] --> AuthCtx[AuthContextProvider]
+    AuthCtx --> TaskCtx[TaskContextProvider]
+    
+    TaskCtx --> Routes[React Router Routes]
+    
+    Routes --> Login["/login - Login.jsx"]
+    Routes --> AdminRoute["/admin - ProtectedRoute (admin)"]
+    Routes --> EmpRoute["/employee - ProtectedRoute (employee)"]
+    
+    AdminRoute --> AdminDash[AdminDashBoard.jsx]
+    EmpRoute --> EmpDash[EmployeeDashBoard.jsx]
+    
+    AdminDash --> CreateTask[Create Task Form]
+    AdminDash --> TaskSummary[Task Filter & Table]
+    
+    EmpDash --> Header[Header.jsx - Profile Edit & Logout]
+    EmpDash --> TaskStats[TaskListNumbers.jsx - KPI Counters]
+    EmpDash --> TaskBoard[TaskList.jsx - Status Cards]
+    
+    AuthCtx <--> Storage[(localStorage: session, admin, employees)]
+    TaskCtx <--> StorageTasks[(localStorage: tasks)]
 ```
-                   ┌───────────────────────────────────┐
-                   │           BrowserRouter           │
-                   └─────────────────┬─────────────────┘
-                                     │
-                 ┌───────────────────┴───────────────────┐
-                 │          AuthContextProvider          │
-                 │      (user, login, logout state)      │
-                 └───────────────────┬───────────────────┘
-                                     │
-                 ┌───────────────────┴───────────────────┐
-                 │          TaskContextProvider          │
-                 │    (tasks, addTask, update, delete)   │
-                 └───────────────────┬───────────────────┘
-                                     │
-       ┌─────────────────────────────┼─────────────────────────────┐
-       ▼                             ▼                             ▼
-  [/login]                        [/admin]                    [/employee]
-  <Login />                 <ProtectedRoute:admin>      <ProtectedRoute:employee>
-                              <AdminDashBoard />          <EmployeeDashBoard />
-```
-
-- **`AuthContext` (`src/context/AuthContext.jsx`)**:
-  - Manages active user authentication state (`user: { email, role }`).
-  - Verifies credentials against `localStorage` (`admin` and `employees` tables).
-- **`TaskContext` (`src/context/TaskContext.jsx`)**:
-  - Aggregates task arrays and exposes global mutation functions: `addTask`, `updateTaskStatus`, `deleteTask`.
-  - Automatically synchronizes all changes with `localStorage` so data persists across page refreshes.
-- **`ProtectedRoute` (`src/components/Auth/ProtectedRoute.jsx`)**:
-  - Intercepts navigation attempts.
-  - Redirects unauthenticated traffic to `/login`.
-  - Redirects users attempting to view unauthorized role pages back to their designated dashboard.
 
 ---
 
-## 💻 Local Setup & Installation
-
-### Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm** or **yarn** / **pnpm**
-
-### Step-by-Step
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/employee-management-system.git
-   cd employee-management-system
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Start the local development server**:
-   ```bash
-   npm run dev
-   ```
-   Open your browser at `http://localhost:5173`.
-
-4. **Build for production**:
-   ```bash
-   npm run build
-   ```
-
-5. **Preview production build locally**:
-   ```bash
-   npm run preview
-   ```
-
----
-
-## 🌐 Deployment Guide
-
-### Option 1: Deploying to Vercel (Recommended)
-
-1. Push your repository to GitHub.
-2. Sign in to [Vercel](https://vercel.com/) and click **"Add New Project"**.
-3. Import your `ems` GitHub repository.
-4. Keep the default settings:
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-5. Click **Deploy**.
-   > *Note: The included `vercel.json` already contains SPA rewrite rules to ensure routes like `/admin` and `/employee` work on direct reload.*
-
-### Option 2: Deploying to Netlify
-
-1. Sign in to [Netlify](https://www.netlify.com/) and click **"Add new site"** -> **"Import an existing project"**.
-2. Connect your GitHub repository.
-3. Settings:
-   - **Build command**: `npm run build`
-   - **Publish directory**: `dist`
-4. Click **Deploy Site**.
-   > *Note: The included `public/_redirects` file automatically handles SPA routing.*
-
----
-
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
 employee-management-system/
-├── public/
-│   └── _redirects              # Netlify SPA routing redirects
+├── public/                      # Static assets & favicon
 ├── src/
 │   ├── components/
 │   │   ├── Auth/
-│   │   │   ├── Login.jsx        # Login page with input validation
-│   │   │   └── ProtectedRoute.jsx # Role-based route guard
+│   │   │   ├── Login.jsx              # Login screen with demo autofill
+│   │   │   └── ProtectedRoute.jsx     # Role-based route guard
 │   │   ├── DashBoard/
-│   │   │   ├── AdminDashBoard.jsx    # Task creator & overview table
-│   │   │   └── EmployeeDashBoard.jsx # Employee workspace
-│   │   ├── other/
-│   │   │   ├── Header.jsx            # User welcome banner & logout
-│   │   │   └── TaskListNumbers.jsx   # Task metric stat cards
-│   │   └── TaskList/
-│   │       ├── TaskList.jsx          # Horizontal scrollable card container
-│   │       ├── NewTask.jsx           # Unaccepted new task card
-│   │       ├── AcceptTask.jsx        # Active task action card
-│   │       ├── CompleteTask.jsx      # Completed badge card
-│   │       └── FailedTask.jsx        # Failed badge card
+│   │   │   ├── AdminDashBoard.jsx     # Admin management console
+│   │   │   └── EmployeeDashBoard.jsx  # Employee portal
+│   │   ├── TaskList/
+│   │   │   ├── AcceptTask.jsx         # Card for accepted tasks
+│   │   │   ├── CompleteTask.jsx       # Card for completed tasks
+│   │   │   ├── FailedTask.jsx         # Card for failed tasks
+│   │   │   ├── NewTask.jsx            # Card for new incoming tasks
+│   │   │   └── TaskList.jsx           # Horizontal card container
+│   │   └── other/
+│   │       ├── Header.jsx             # Header with username customization
+│   │       └── TaskListNumbers.jsx    # Metric counter cards
 │   ├── context/
-│   │   ├── AuthContext.jsx     # User session provider
-│   │   ├── auth-context.js     # AuthContext hook
-│   │   ├── TaskContext.jsx     # Global task state provider
-│   │   └── task-context.js     # TaskContext hook
+│   │   ├── AuthContext.jsx            # Auth state & session handler
+│   │   ├── TaskContext.jsx            # Task CRUD state & dispatchers
+│   │   ├── auth-context.js            # Auth context hook & instance
+│   │   └── task-context.js            # Task context hook & instance
 │   ├── utils/
-│   │   └── localStorage.jsx    # Seed mock data and storage helpers
-│   ├── App.jsx                 # App routes and Toaster configuration
-│   ├── main.jsx                # React root mount
-│   └── index.css               # Global styles & Tailwind
-├── .env.example                # Example environment file
-├── vercel.json                 # Vercel SPA rewrite configuration
+│   │   └── localStorage.jsx           # Seed data & storage initializers
+│   ├── App.jsx                        # Application root, routing & toast provider
+│   ├── index.css                      # Tailwind base directives & root styles
+│   └── main.jsx                       # React DOM entry point
 ├── package.json
-└── vite.config.js
+├── vite.config.js
+└── README.md
 ```
 
 ---
 
-## 📄 License
+## 💻 Local Development
 
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) (v18.0.0 or later)
+- [npm](https://www.npmjs.com/) (v9.0.0 or later)
+
+### 2. Clone & Install
+```bash
+# Clone the repository
+git clone https://github.com/your-username/employee-management-system.git
+
+# Navigate into project directory
+cd employee-management-system
+
+# Install dependencies
+npm install
+```
+
+### 3. Run Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### 4. Build for Production
+```bash
+# Run ESLint validation
+npm run lint
+
+# Compile production bundle
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+---
+
+## 🚢 Deployment Guide (Vercel)
+
+1. Push your code to a GitHub repository:
+   ```bash
+   git remote add origin https://github.com/<your-username>/employee-management-system.git
+   git branch -M main
+   git push -u origin main
+   ```
+2. Go to [Vercel](https://vercel.com/) and click **"Add New Project"**.
+3. Import your GitHub repository.
+4. Framework Preset: **Vite**
+5. Root Directory: `./`
+6. Click **Deploy**. Vercel will automatically build and serve the application using the included `vercel.json` rewrite configuration.
+
+---
+
+## 📜 License
 This project is open-source and available under the [MIT License](LICENSE).
