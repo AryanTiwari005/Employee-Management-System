@@ -1,8 +1,9 @@
 const employees = [
   {
     id: 1,
-    email: "employee1@example.com",
-    password: "123",
+    firstName: "Aryan",
+    email: "tiwariaryan.2005@gmail.com",
+    password: "Aryan@2005",
     tasks: [
       {
         active: true,
@@ -59,6 +60,7 @@ const employees = [
 
   {
     id: 2,
+    firstName: "Sneha",
     email: "employee2@example.com",
     password: "123",
     tasks: [
@@ -117,6 +119,7 @@ const employees = [
 
   {
     id: 3,
+    firstName: "Rahul",
     email: "employee3@example.com",
     password: "123",
     tasks: [
@@ -175,6 +178,7 @@ const employees = [
 
   {
     id: 4,
+    firstName: "Priya",
     email: "employee4@example.com",
     password: "123",
     tasks: [
@@ -233,6 +237,7 @@ const employees = [
 
   {
     id: 5,
+    firstName: "Karan",
     email: "employee5@example.com",
     password: "123",
     tasks: [
@@ -293,6 +298,7 @@ const employees = [
 const admin = [
   {
     id: 1,
+    firstName: "Admin",
     email: "admin@example.com",
     password: "123"
   }
@@ -300,12 +306,32 @@ const admin = [
 
 /**
  * Seeds localStorage with employees and admin data.
- * Only writes if the keys don't already exist (avoids overwriting user edits).
+ * Merges or writes if keys don't exist.
  */
 export const setLocalStorage = () => {
   if (!localStorage.getItem('employees')) {
     localStorage.setItem('employees', JSON.stringify(employees));
+  } else {
+    // If employees exist but are missing firstName, patch them
+    try {
+      const stored = JSON.parse(localStorage.getItem('employees'));
+      let modified = false;
+      const updated = stored.map((emp) => {
+        if (!emp.firstName) {
+          modified = true;
+          const match = employees.find((e) => e.id === emp.id || e.email === emp.email);
+          return { ...emp, firstName: match?.firstName || emp.email.split('@')[0] };
+        }
+        return emp;
+      });
+      if (modified) {
+        localStorage.setItem('employees', JSON.stringify(updated));
+      }
+    } catch {
+      // ignore
+    }
   }
+
   if (!localStorage.getItem('admin')) {
     localStorage.setItem('admin', JSON.stringify(admin));
   }
